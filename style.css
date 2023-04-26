@@ -1,0 +1,28 @@
+.display{
+	padding: 7px;
+	width: 300px;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid lightgray;
+}
+
+.container-botoes{
+	width: 300px;
+	height: 35px;
+	display: flex;
+}
+
+button{
+    width: 70px;
+}
+
+.texto{
+	width: 300px;
+}
+
+.item{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
