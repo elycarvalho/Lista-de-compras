@@ -1,16 +1,30 @@
+body{
+	display: flex;
+	justify-content: center;
+
+}
+.container{
+	height: 450px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
 .display{
 	padding: 7px;
-	width: 300px;
-	height: 300px;
+	width: 330px;
+	height: 330px;
 	display: flex;
 	flex-direction: column;
 	border: 1px solid lightgray;
+	overflow: scroll;
 }
 
 .container-botoes{
-	width: 300px;
+	width: 330px;
 	height: 35px;
 	display: flex;
+	justify-content: space-evenly;
 }
 
 button{
@@ -18,7 +32,7 @@ button{
 }
 
 .texto{
-	width: 300px;
+	width: 265px;
 }
 
 .item{

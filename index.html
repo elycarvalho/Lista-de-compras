@@ -2,22 +2,24 @@
 <html lang="pt-br">
 <head>
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-	<meta name="author" content="Ely Carvalho da SIlva">
+	<meta name="author" content="Ely Carvalho da Silva">
 	<meta charset="utf-8">
 	<!--<meta http-equiv="refresh" content="30">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>indexOf</title>
+	<!--Font awesome-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+	<title>Lista de tarefas</title>
 </head>
 <body>
 	<div class="container">
 		<div>
-			<input type="text" class="texto">
-			<button onclick="incluir()">incluir</button>
+			<input type="text" class="texto" maxlength="30">
+			<button onclick="incluir()"><i class="fas fa-plus"></i></button>
 		</div>
 	  
 	    <div class="container-botoes">  
-		    <button onclick="pesquisar()">pesquisar</button>
+		    <button onclick="pesquisar()"><i class="fas fa-search"></i></button>
 		    <button onclick="mostraTodos()">mostrar todos</button>
 		    <button onclick="apagaTodos()">apaga todos</button>
 	    </div>

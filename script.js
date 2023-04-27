@@ -24,39 +24,37 @@ function incluir(){
 
 function apagar(e){
     items.splice(e.parentElement.id, 1)
-    
-
-
-	/*itemDigitado = texto.value
-	pesquisado = items.indexOf(itemDigitado)
-	items.splice(pesquisado, 1)
-	alert(items[pesquisado] + ' deletado')*/
 	mostraTodos()
 }
 
 function pesquisar(){
 	itemDigitado = texto.value
 	pesquisado = items.indexOf(itemDigitado)
-	if(pesquisado === -1){alert('item não encontrado')}
-	display.innerHTML = items[pesquisado]
-}
-
-/*function mostraTodos(){
-	display.innerHTML = ''
-	for (let i = 0; i < items.length; i++){
-		display.innerHTML += `${items[i]}<br>`
+	if(pesquisado === -1){
+		alert('item não encontrado')
+	}else{
+    texto.value = ''
+	display.innerHTML = `
+		    <div "class="item">
+		        ${items[pesquisado]}
+		        <div>
+		          <button onclick="editar(this)"><i class="fas fa-edit"></i></button>
+		          <button onclick="apagar(this)"><i class="fas fa-trash"></i></button>
+		        </div>
+		    </div>
+		    `
 	}
-}*/
+}
 
 function mostraTodos(){
 	display.innerHTML = ''
 	for (let i = 0; i < items.length; i++){
 		display.innerHTML += `
-		    <div id="${i}" onclick="select(this)" ondblclick="unselect(this)" class="item">
+		    <div id="${i}" class="item">
 		        ${items[i]}
 		        <div>
-		          <button onclick="editar(this)">Editar</button>
-		          <button onclick="apagar(this)">Apagar</button>
+		          <button onclick="editar(this)"><i class="fas fa-edit"></i></button>
+		          <button onclick="apagar(this)"><i class="fas fa-trash"></i></button>
 		        </div>
 		    </div>
 		    `
@@ -82,16 +80,4 @@ function editar(e){
 	console.log(items[e.parentElement.parentElement.id])
 }
 
-let selecionados = []
-
-function select(e){
-	selecionados.push(e.id)
-	e.style.backgroundColor = 'lightblue'
-}
-
-function unselect(e){
-	selecionados.splice(items.indexOf(e.id), 1)
-	console.log(selecionados)
-	e.style.backgroundColor = 'white'
-}
 
