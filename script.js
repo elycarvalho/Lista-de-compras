@@ -9,44 +9,64 @@ let indexEdit = ''
 mostraTodos()
 
 function incluir(){
-	if(editado === true){
-        itemDigitado = texto.value
-        items[indexEdit] = itemDigitado
-        texto.value = ''
+	if(texto.value === ''){
+		alert('Escreva a tarefa antes de clicar nesse botão!')
 	}else{
-		itemDigitado = texto.value
-		items.push(itemDigitado)
-		texto.value = ''
+		if(editado === true){
+	        itemDigitado = texto.value
+	        items[indexEdit] = itemDigitado
+	        texto.value = ''
+		}else{
+			itemDigitado = texto.value
+			items.push(itemDigitado)
+			texto.value = ''
+	    }
+	    editado = false
+	    localStorage.setItem("tarefas", JSON.stringify(items))
+		mostraTodos()
     }
-    editado = false
-	mostraTodos()
 }
 
 function apagar(e){
-    items.splice(e.parentElement.id, 1)
-	mostraTodos()
+	items = JSON.parse(localStorage.tarefas)
+	console.log(e.parentElement.parentElement.id)
+    items.splice(e.parentElement.parentElement.id, 1)
+    localStorage.setItem("tarefas", JSON.stringify(items))
+    mostraTodos()	
 }
 
+let digitado = ''
+let itemCorte = ''
+let encontrados = 0
 function pesquisar(){
-	itemDigitado = texto.value
-	pesquisado = items.indexOf(itemDigitado)
-	if(pesquisado === -1){
-		alert('item não encontrado')
+	if(texto.value === ''){
+		alert('Digite uma tarefa ou um trecho a ser pesquisado!')
 	}else{
-    texto.value = ''
-	display.innerHTML = `
-		    <div "class="item">
-		        ${items[pesquisado]}
-		        <div>
-		          <button onclick="editar(this)"><i class="fas fa-edit"></i></button>
-		          <button onclick="apagar(this)"><i class="fas fa-trash"></i></button>
-		        </div>
-		    </div>
-		    `
-	}
+		items = JSON.parse(localStorage.tarefas)
+		display.innerHTML = ''
+		for (let i = 0; i < items.length; i++) {
+			digitado = texto.value
+			itemCorte = items[i].slice(0, digitado.length)
+			if(digitado === itemCorte){
+				display.innerHTML += `
+				    <div class="item">
+				        ${items[i]}
+				        <div>
+				          <button onclick="editar(this)"><i class="fas fa-edit"></i></button>
+				          <button onclick="apagar(this)"><i class="fas fa-trash"></i></button>
+				        </div>
+				    </div>
+			        `
+                encontrados++
+			}
+		}
+		if(encontrados === 0){alert('item não encontrado!')}
+		encontrados = 0
+    }
 }
 
 function mostraTodos(){
+	items = JSON.parse(localStorage.tarefas)
 	display.innerHTML = ''
 	for (let i = 0; i < items.length; i++){
 		display.innerHTML += `
@@ -65,11 +85,12 @@ function mostraTodos(){
 function apagaTodos(){
 	let confirmar = prompt('Isso ira apagar todos os registros! Digite confirmar para prosseguir.')
 	if(confirmar === 'confirmar'){
-		items = ''
+		items = []
+		localStorage.setItem("tarefas", JSON.stringify(items))
 		display.innerHTML = ''
 		alert('Todos os registros foram apagados!')
 	}else{
-		alert('A ação não foi executada')
+		alert('A ação não foi executada!')
 	}
 }
 
