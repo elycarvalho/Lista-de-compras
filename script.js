@@ -1,5 +1,8 @@
+const modalPesq = document.querySelector('.modal-pesquisa')
 const texto = document.querySelector('.texto')
 const display = document.querySelector('.display')
+const btnIncluir = document.querySelector('.btn-incluir')
+const textoPesq = document.querySelector('.texto-pesq')
 let items = []
 let itemDigitado = ''
 let pesquisado = ''
@@ -24,6 +27,8 @@ function incluir(){
 	    editado = false
 	    localStorage.setItem("tarefas", JSON.stringify(items))
 		mostraTodos()
+		texto.style.backgroundColor = "#fff"
+		btnIncluir.innerHTML = "<i class='fas fa-plus'></i>"
     }
 }
 
@@ -38,14 +43,20 @@ function apagar(e){
 let digitado = ''
 let itemCorte = ''
 let encontrados = 0
+
+function mostraPesquisa(){
+	modalPesq.style.display = 'flex'
+}
+
 function pesquisar(){
-	if(texto.value === ''){
+	if(textoPesq.value === ''){
 		alert('Digite uma tarefa ou um trecho a ser pesquisado!')
 	}else{
+		modalPesq.style.display = 'none'
 		items = JSON.parse(localStorage.tarefas)
 		display.innerHTML = ''
 		for (let i = 0; i < items.length; i++) {
-			digitado = texto.value
+			digitado = textoPesq.value
 			itemCorte = items[i].slice(0, digitado.length)
 			if(digitado === itemCorte){
 				display.innerHTML += `
@@ -63,6 +74,10 @@ function pesquisar(){
 		if(encontrados === 0){alert('item não encontrado!')}
 		encontrados = 0
     }
+}
+
+function fechaPesq(){
+	modalPesq.style.display = 'none'
 }
 
 function mostraTodos(){
@@ -95,6 +110,9 @@ function apagaTodos(){
 }
 
 function editar(e){
+	texto.style.backgroundColor = "#FBFDC1"
+    btnIncluir.innerHTML = "<i class='fas fa-check'></i>"
+	texto.focus()
 	editado = true
 	texto.value = items[e.parentElement.parentElement.id]
 	indexEdit = e.parentElement.parentElement.id

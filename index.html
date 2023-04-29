@@ -13,20 +13,29 @@
 </head>
 <body>
 	<div class="container">
+		<div class="modal-pesquisa">
+			<button class="btn-fecha-pesq" onclick="fechaPesq()">X</button>
+			<p>Digite o nome a ser pesquisado:</p>
+		   <input type="text" class="texto-pesq" maxlength="30"> 
+         <button class="btn-pesquisa" onclick="pesquisar()">
+            <i class="fas fa-search"></i>
+         </button>
+		</div>
+
 		<div class="top">
 			<input type="text" class="texto" maxlength="30">
 			<button class="btn-incluir" onclick="incluir()"><i class="fas fa-plus"></i></button>
 		</div>
 	  
-	    <div class="container-botoes">  
-		    <button onclick="pesquisar()"><i class="fas fa-search"></i></button>
-		    <button onclick="mostraTodos()">mostra todos</button>
-		    <button onclick="apagaTodos()">apaga todos</button>
-	    </div>
+	   <div class="container-botoes">  
+		   <button onclick="mostraPesquisa()"><i class="fas fa-search"></i></button>
+		   <button onclick="mostraTodos()">mostra todos</button>
+		   <button onclick="apagaTodos()">apaga todos</button>
+	   </div>
 
-	    <div class="display"></div>
+	   <div class="display"></div>
    </div>
 
-  <script src="script.js"></script>
+   <script src="script.js"></script>
 </body>
 </html>
