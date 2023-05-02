@@ -2,15 +2,15 @@ body{
 	display: flex;
 	justify-content: center;
     font-family: roboto, Arial, sans-serif;
-    background-color: #DFE1E1;
+    background-color: #7AAECA;
 }
 .container{
 	position: relative;
 	background-color: #E6EFF0;
-	height: 550px;
+	height: 575px;
 	display: flex;
 	flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     border: 1px solid darkgray;
     border-radius: 10px;
     padding: 10px;
@@ -22,11 +22,24 @@ body{
 	justify-content: space-between;
 }
 
+.titulo{
+	letter-spacing: 2px;
+	font-weight: bold;
+	font-size: 1.4rem;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	color: #A0D6D5;
+	background-color: #03543A;
+}
+
 .display{
-	background-color: #D9F8FC;
+	background-color: #E2F9FC;
 	padding: 7px;
 	width: 340px;
-	height: 430px;
+	height: 410px;
 	display: flex;
 	flex-direction: column;
 	border: 1px solid lightgray;
@@ -39,7 +52,7 @@ body{
 	position: absolute;
 	top: 20px;
 	padding: 10px;
-	width: 320px;
+	width: 325px;
 	height: 135px;
 	justify-content: space-evenly;
 	align-items: center;
@@ -61,12 +74,15 @@ body{
 }
 
 .btn-fecha-pesq{
+	background-color: #C60000;
+	color: #fff;
 	font-weight: bold;
 	position: absolute;
 	top: 8px;
 	right: 8px;
 	width: 30px;
 	height: 25px;
+	border: none;
 }
 
 .container-botoes{
@@ -76,7 +92,24 @@ body{
 }
 
 .container-botoes button{
-	width: 75px;
+	width: 105px;
+	font-weight: bold;
+	border-radius: 6px;
+	border: 2px solid gray;
+}
+
+.btn-pesquisa-maior{
+    background-color: #FFD442;
+}
+
+.btn-todos{
+	color: #fff;
+	background-color: #06B141;
+}
+
+.btn-apaga{
+	color: #fff;
+    background-color: #FE2F2F;
 }
 
 .display button{
@@ -88,13 +121,18 @@ body{
 .btn-incluir{
 	width: 50px;
 	height: 30px;
-	font-size: 1.2rem;
+	font-size: 1.1rem;
+	color: #fff;
+	background-color: #1374B2;
+	border-radius: 5px;
+	border: 1px solid #083654;
 }
 
 .texto{
 	border-radius: 6px;
 	width: 265px;
 	height: 23px;
+	padding-left: 10px;
 }
 
 .item{
@@ -102,4 +140,5 @@ body{
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
+	border-bottom: 1px solid #DCE9EC;
 }

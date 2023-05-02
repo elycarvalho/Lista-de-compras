@@ -9,11 +9,13 @@ let pesquisado = ''
 let editado = false
 let indexEdit = ''
 
+//localStorage.removeItem('compras')
+
 mostraTodos()
 
 function incluir(){
 	if(texto.value === ''){
-		alert('Escreva a tarefa antes de clicar nesse botão!')
+		alert('Escreva o nome de um item antes clicar em incluir!')
 	}else{
 		if(editado === true){
 	        itemDigitado = texto.value
@@ -25,7 +27,7 @@ function incluir(){
 			texto.value = ''
 	    }
 	    editado = false
-	    localStorage.setItem("tarefas", JSON.stringify(items))
+	    localStorage.setItem("compras", JSON.stringify(items))
 		mostraTodos()
 		texto.style.backgroundColor = "#fff"
 		btnIncluir.innerHTML = "<i class='fas fa-plus'></i>"
@@ -33,10 +35,10 @@ function incluir(){
 }
 
 function apagar(e){
-	items = JSON.parse(localStorage.tarefas)
+	items = JSON.parse(localStorage.compras)
 	console.log(e.parentElement.parentElement.id)
     items.splice(e.parentElement.parentElement.id, 1)
-    localStorage.setItem("tarefas", JSON.stringify(items))
+    localStorage.setItem("compras", JSON.stringify(items))
     mostraTodos()	
 }
 
@@ -50,17 +52,17 @@ function mostraPesquisa(){
 
 function pesquisar(){
 	if(textoPesq.value === ''){
-		alert('Digite uma tarefa ou um trecho a ser pesquisado!')
+		alert('Digite o nome do item a ser pesquisado!')
 	}else{
 		modalPesq.style.display = 'none'
-		items = JSON.parse(localStorage.tarefas)
+		items = JSON.parse(localStorage.compras)
 		display.innerHTML = ''
 		for (let i = 0; i < items.length; i++) {
 			digitado = textoPesq.value
 			itemCorte = items[i].slice(0, digitado.length)
 			if(digitado === itemCorte){
 				display.innerHTML += `
-				    <div class="item">
+				    <div id="${i}"class="item">
 				        ${items[i]}
 				        <div>
 				          <button onclick="editar(this)"><i class="fas fa-edit"></i></button>
@@ -81,7 +83,7 @@ function fechaPesq(){
 }
 
 function mostraTodos(){
-	items = JSON.parse(localStorage.tarefas)
+	items = JSON.parse(localStorage.compras)
 	display.innerHTML = ''
 	for (let i = 0; i < items.length; i++){
 		display.innerHTML += `
@@ -101,7 +103,7 @@ function apagaTodos(){
 	let confirmar = prompt('Isso ira apagar todos os registros! Digite confirmar para prosseguir.')
 	if(confirmar === 'confirmar'){
 		items = []
-		localStorage.setItem("tarefas", JSON.stringify(items))
+		localStorage.setItem("compras", JSON.stringify(items))
 		display.innerHTML = ''
 		alert('Todos os registros foram apagados!')
 	}else{
@@ -118,5 +120,11 @@ function editar(e){
 	indexEdit = e.parentElement.parentElement.id
 	console.log(items[e.parentElement.parentElement.id])
 }
+
+texto.addEventListener('keypress', (e)=>{
+	if(e.key === 'Enter'){
+		incluir()
+	}
+})
 
 

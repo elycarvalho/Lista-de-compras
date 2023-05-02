@@ -9,10 +9,11 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<!--Font awesome-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-	<title>Lista de tarefas</title>
+	<title>Lista de compras</title>
 </head>
 <body>
 	<div class="container">
+		<div class="titulo">LISTA DE COMPRAS</div>
 		<div class="modal-pesquisa">
 			<button class="btn-fecha-pesq" onclick="fechaPesq()">X</button>
 			<p>Digite o nome a ser pesquisado:</p>
@@ -28,9 +29,15 @@
 		</div>
 	  
 	   <div class="container-botoes">  
-		   <button onclick="mostraPesquisa()"><i class="fas fa-search"></i></button>
-		   <button onclick="mostraTodos()">mostra todos</button>
-		   <button onclick="apagaTodos()">apaga todos</button>
+		   <button class="btn-pesquisa-maior" onclick="mostraPesquisa()">
+		   	<i class="fas fa-search"></i>
+		   </button>
+		   <button class="btn-todos" onclick="mostraTodos()">
+		      mostra todos
+		   </button>
+		   <button class="btn-apaga" onclick="apagaTodos()">
+		      apaga todos
+		   </button>
 	   </div>
 
 	   <div class="display"></div>
