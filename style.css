@@ -38,7 +38,7 @@ body{
 .display{
 	background-color: #E2F9FC;
 	padding: 7px;
-	width: 340px;
+	width: 330px;
 	height: 410px;
 	display: flex;
 	flex-direction: column;
@@ -141,4 +141,17 @@ body{
 	justify-content: space-between;
 	width: 100%;
 	border-bottom: 1px solid #DCE9EC;
+}
+
+@media (min-width: 576px){
+	.display{
+		width: 480px;
+	}
+	.texto{
+		text-align: center;
+		width: 365px;
+	}
+	.modal-pesquisa{
+		width: 400px;
+	}
 }

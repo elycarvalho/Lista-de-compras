@@ -9,8 +9,6 @@ let pesquisado = ''
 let editado = false
 let indexEdit = ''
 
-//localStorage.removeItem('compras')
-
 mostraTodos()
 
 function incluir(){
@@ -96,7 +94,6 @@ function mostraTodos(){
 		    </div>
 		    `
 	}
-
 }
 
 function apagaTodos(){
