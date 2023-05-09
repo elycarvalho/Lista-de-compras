@@ -1,5 +1,5 @@
 const modalPesq = document.querySelector('.modal-pesquisa')
-const texto = document.querySelector('.texto')
+const descricao = document.querySelector('.descricao')
 const display = document.querySelector('.display')
 const btnIncluir = document.querySelector('.btn-incluir')
 const textoPesq = document.querySelector('.texto-pesq')
@@ -12,22 +12,30 @@ let indexEdit = ''
 mostraTodos()
 
 function incluir(){
-	if(texto.value === ''){
+	if(descricao.value === ''){
 		alert('Escreva o nome de um item antes clicar em incluir!')
 	}else{
 		if(editado === true){
-	        itemDigitado = texto.value
+	        itemDigitado = descricao.value
 	        items[indexEdit] = itemDigitado
-	        texto.value = ''
+	        descricao.value = ''
 		}else{
-			itemDigitado = texto.value
+            //verifica se tem algum item com mesmo nome
+            items = JSON.parse(localStorage.compras)
+            let igual = items.indexOf(descricao.value)
+            if(descricao.value === items[igual]){
+    	    alert('já existe um item com esse nome!')
+    	    descricao.value += ` - cópia`
+            }
+
+			itemDigitado = descricao.value
 			items.push(itemDigitado)
-			texto.value = ''
+			descricao.value = ''
 	    }
 	    editado = false
 	    localStorage.setItem("compras", JSON.stringify(items))
 		mostraTodos()
-		texto.style.backgroundColor = "#fff"
+		descricao.style.backgroundColor = "#fff"
 		btnIncluir.innerHTML = "<i class='fas fa-plus'></i>"
     }
 }
@@ -109,16 +117,16 @@ function apagaTodos(){
 }
 
 function editar(e){
-	texto.style.backgroundColor = "#FBFDC1"
+	descricao.style.backgroundColor = "#FBFDC1"
     btnIncluir.innerHTML = "<i class='fas fa-check'></i>"
-	texto.focus()
+	descricao.focus()
 	editado = true
-	texto.value = items[e.parentElement.parentElement.id]
+	descricao.value = items[e.parentElement.parentElement.id]
 	indexEdit = e.parentElement.parentElement.id
 	console.log(items[e.parentElement.parentElement.id])
 }
 
-texto.addEventListener('keypress', (e)=>{
+descricao.addEventListener('keypress', (e)=>{
 	if(e.key === 'Enter'){
 		incluir()
 	}
