@@ -76,9 +76,9 @@ function pesquisar(){
 		display.innerHTML = ''
 		for (let i = 0; i < items.length; i++) {
 			digitado = textoPesq.value
-			itemCorte = items[i].slice(0, digitado.length)
+			itemCorte = items[i].descricaoX.slice(0, digitado.length)
 			if(digitado === itemCorte){
-				display.innerHTML += `
+				/*display.innerHTML += `
 				    <div id="${i}"class="item">
 				        ${items[i]}
 				        <div>
@@ -86,7 +86,19 @@ function pesquisar(){
 				          <button onclick="apagar(this)"><i class="fas fa-trash"></i></button>
 				        </div>
 				    </div>
-			        `
+			        `*/
+			let tr = document.createElement("tr")
+		  tr.setAttribute("id", i)
+		  tr.innerHTML += `
+            <td class="descricao">${items[i].descricaoX}</td>
+            <td>${items[i].quantidadeX}</td>
+            <td>${items[i].precoX}</td>
+            <td>
+              <button onclick="editar(this)"><i class="fas fa-edit"></i></button>
+              <button onclick="apagar(this)"><i class="fas fa-trash"></i></button>
+            </td>
+		`
+		display.appendChild(tr)
                 encontrados++
 			}
 		}
@@ -116,30 +128,15 @@ function mostraTodos(){
 		let tr = document.createElement("tr")
 		tr.setAttribute("id", i)
 		tr.innerHTML += `
-            <td>${items[i].descricaoX}</td>
+            <td class="descricao">${items[i].descricaoX}</td>
             <td>${items[i].quantidadeX}</td>
             <td>${items[i].precoX}</td>
             <td>
               <button onclick="editar(this)"><i class="fas fa-edit"></i></button>
-            </td>
-            <td>
               <button onclick="apagar(this)"><i class="fas fa-trash"></i></button>
             </td>
 		`
 		display.appendChild(tr)
-		/*display.innerHTML += `
-		    <div id="${i}" class="items">
-		        <div>${items[i].descricaoX}</div>
-		        <div class="item">
-		            ${items[i].quantidadeX}
-		            R$${items[i].precoX}
-		        </div>
-		        <div>
-		          <button onclick="editar(this)"><i class="fas fa-edit"></i></button>
-		          <button onclick="apagar(this)"><i class="fas fa-trash"></i></button>
-		        </div>
-		    </div>
-		    `*/
 	}
 }
 
