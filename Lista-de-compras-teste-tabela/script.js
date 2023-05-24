@@ -8,43 +8,36 @@ const textoPesq = document.querySelector('.texto-pesq')
 let items = []
 let itemDigitado = ''
 let pesquisado = ''
-let editado = false
+
 let indexEdit = ''
+
+let descricao = document.querySelector('.nome-item')
+let quantidade = document.querySelector('.qtde-item')
+let preco = document.querySelector('.preco-item')
 
 mostraTodos()
 
 function incluir(){
-	let descricao = document.querySelector('.nome-item')
-	let quantidade = document.querySelector('.qtde-item')
-	let preco = document.querySelector('.preco-item')
-
 	if(descricao.value === ''){
 		alert('O campo descrição não pode ficar em branco!')
 	}else{
 		itemDigitado = {
-	        descricaoX: descricao.value,
-	        quantidadeX: quantidade.value,
-	        precoX: preco.value 
-	    }
-	    console.log(itemDigitado)
+	    descricaoX: descricao.value,
+	    quantidadeX: quantidade.value,
+	    precoX: preco.value 
+	  }
+	  console.log(itemDigitado)
 
-		if(editado === true){
-	        items[indexEdit] = itemDigitado
-	        descricao.value = ''
-	        quantidade.value = ''
-	        preco.value = ''
-		}else{
-			items.push(itemDigitado)
-			descricao.value = ''
-	        quantidade.value = ''
-	        preco.value = ''
-	    }
-	    editado = false
-	    localStorage.setItem("compras", JSON.stringify(items))
+	  items.push(itemDigitado)
+		descricao.value = ''
+	  quantidade.value = ''
+	  preco.value = ''
+
+	  localStorage.setItem("compras", JSON.stringify(items))
 		mostraTodos()
 		//texto.style.backgroundColor = "#fff"
 		btnIncluir.innerHTML = "<i class='fas fa-plus'></i>"
-    }
+	}
 }
 
 function apagar(e){
@@ -67,6 +60,13 @@ function mostraIncluir() {
 	modalIncluir.style.display = 'flex'
 }
 
+function mostraEditar(e) {
+	modalEditar.style.display = 'flex'
+  document.querySelector(".nome-edit").value = items[e.parentElement.parentElement.id].descricaoX
+  document.querySelector(".qtde-edit").value = items[e.parentElement.parentElement.id].quantidadeX
+  document.querySelector(".preco-edit").value = items[e.parentElement.parentElement.id].precoX
+}
+
 function pesquisar(){
 	if(textoPesq.value === ''){
 		alert('Digite o nome do item a ser pesquisado!')
@@ -78,26 +78,17 @@ function pesquisar(){
 			digitado = textoPesq.value
 			itemCorte = items[i].descricaoX.slice(0, digitado.length)
 			if(digitado === itemCorte){
-				/*display.innerHTML += `
-				    <div id="${i}"class="item">
-				        ${items[i]}
-				        <div>
-				          <button onclick="editar(this)"><i class="fas fa-edit"></i></button>
-				          <button onclick="apagar(this)"><i class="fas fa-trash"></i></button>
-				        </div>
-				    </div>
-			        `*/
-			let tr = document.createElement("tr")
-		  tr.setAttribute("id", i)
-		  tr.innerHTML += `
+			  let tr = document.createElement("tr")
+		    tr.setAttribute("id", i)
+		    tr.innerHTML += `
             <td class="descricao">${items[i].descricaoX}</td>
-            <td>${items[i].quantidadeX}</td>
-            <td>${items[i].precoX}</td>
+            <td class="quantidade">${items[i].quantidadeX}</td>
+            <td class="preco">${items[i].precoX}</td>
             <td>
-              <button onclick="editar(this)"><i class="fas fa-edit"></i></button>
+              <button onclick="mostraEditar(this)"><i class="fas fa-edit"></i></button>
               <button onclick="apagar(this)"><i class="fas fa-trash"></i></button>
             </td>
-		`
+		    `
 		display.appendChild(tr)
                 encontrados++
 			}
@@ -129,10 +120,10 @@ function mostraTodos(){
 		tr.setAttribute("id", i)
 		tr.innerHTML += `
             <td class="descricao">${items[i].descricaoX}</td>
-            <td>${items[i].quantidadeX}</td>
-            <td>${items[i].precoX}</td>
+            <td class="quantidade">${items[i].quantidadeX}</td>
+            <td class="preco">${items[i].precoX}</td>
             <td>
-              <button onclick="editar(this)"><i class="fas fa-edit"></i></button>
+              <button onclick="mostraEditar(this)"><i class="fas fa-edit"></i></button>
               <button onclick="apagar(this)"><i class="fas fa-trash"></i></button>
             </td>
 		`
@@ -153,11 +144,10 @@ function apagaTodos(){
 }
 
 function editar(e){
-	texto.style.backgroundColor = "#FBFDC1"
-    btnIncluir.innerHTML = "<i class='fas fa-check'></i>"
-	texto.focus()
-	editado = true
-	texto.value = items[e.parentElement.parentElement.id]
+  items = {
+  	
+  }
+
 	indexEdit = e.parentElement.parentElement.id
 	console.log(items[e.parentElement.parentElement.id])
 }
