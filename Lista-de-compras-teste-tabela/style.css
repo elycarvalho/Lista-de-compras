@@ -26,25 +26,25 @@ body{
 	align-items: center;
 	justify-content: center;
 	border-radius: 10px;
-	color: #A0D6D5;
+	color: #B1E5E4;
 	background-color: #03543A;
 }
 
 .topo-tabela{
 	position: absolute;
 	z-index: 1;
-	top: 130px;
+	top: 105px;
 	left: 14px;
-	width: 65%;
+	width: 71%;
 	display: flex;
 	justify-content: space-between;
 }
 
 .display{
-	background-color: #E2F9FC;
+	background-color: #ECFBFD;
 	padding: 3px;
 	width: 340px;
-	height: 410px;
+	height: 440px;
 	display: flex;
 	flex-direction: column;
 	border: 1px solid lightgray;
@@ -54,24 +54,27 @@ body{
 tr{	
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	border-bottom: 1px solid lightgray;
+	max-height: 39px;
+}
+
+td{
+	border-right: 1px solid lightgray;
 }
 
 .descricao{
 	width: 46.5%;
-
 }
 
 .quantidade{
-	width: 9%;
+	width: 11%;
 	text-align: center;
-
 }
 
 .preco{
-	width: 18%;
+	width: 17%;
 	text-align: right;
-
 }
 
 .modal{
@@ -99,6 +102,7 @@ tr{
 	flex-wrap: wrap;
 	box-shadow: 3px 3px 5px;
 	border-radius: 6px;
+	z-index: 2;
 }
 
 .btn-pesquisa{
@@ -123,7 +127,13 @@ tr{
 	display: none;
 	flex-direction: column;
 	justify-content: space-evenly;
+	align-items: center;
 	z-index: 2;
+}
+
+.qtde-item, .preco-item, .qtde-edit, .preco-edit{
+	text-align: center;
+	width: 80px;
 }
 
 .modal-editar{
@@ -131,6 +141,7 @@ tr{
 	height: 250px;
 	flex-direction: column;
 	justify-content: space-evenly;
+	align-items: center;
 	background-color: #fff;
 	z-index: 2;
 }
@@ -151,6 +162,7 @@ tr{
 	height: 35px;
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 10px;
 }
 
 .container-botoes button{
@@ -165,12 +177,12 @@ tr{
 }
 
 .btn-todos{
-	color: #fff;
+	color: #eaeaea;
 	background-color: #06B141;
 }
 
 .btn-apaga{
-	color: #fff;
+	color: #eaeaea;
     background-color: #FE2F2F;
 }
 
@@ -181,6 +193,8 @@ tr{
 }
 
 .btn-incluir{
+	width: 100px;
+	height: 35px;
 	font-size: 1.1rem;
 	color: #fff;
 	background-color: #1374B2;

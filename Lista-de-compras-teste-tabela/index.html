@@ -26,15 +26,18 @@
 		<div class="modal modal-incluir">
 			<button class="btn-fechar" onclick="fechaModal('i')">X</button>
 
-			<p>Nome do item:</p>
-			<input type="text" class="nome-item" maxlength="30">
-			
-			<p>Quantidade:</p>
-		   <input type="text" class="qtde-item" maxlength="2"> 
-
-		   <p>Preço:</p>
-		   <input type="text" class="preco-item" maxlength="7">
-
+			<p>
+				Nome do item:
+			   <input type="text" class="nome-item" maxlength="30">
+			</p>
+			<p>
+				Quantidade:
+		      <input type="text" class="qtde-item" maxlength="4"> 
+         </p>
+		   <p>
+		   	Preço:
+		      <input type="text" class="preco-item" maxlength="7">
+         </p>
          <button class="btn-incluir" onclick="incluir()">
             <i class="fas fa-plus"></i>
          </button>
@@ -42,14 +45,20 @@
 
 		<div class="modal modal-editar">
 			<button class="btn-fechar" onclick="fechaModal('e')">X</button>
-			<p>Descrição:</p>
-		   <input type="text" class="nome-edit" maxlength="30"> 
-		   <p>Quantidade:</p>
-		   <input type="text" class="qtde-edit" maxlength="2">
-		   <p>Preço:</p>
-		   <input type="text" class="preco-edit" maxlength="7">
+			<p>
+				Descrição:
+		      <input type="text" class="nome-edit" maxlength="30">
+		   </p> 
+		   <p>
+		      Quantidade:
+		      <input type="text" class="qtde-edit" maxlength="4">
+		   </p>
+		   <p>
+		      Preço:
+		      <input type="text" class="preco-edit" maxlength="7">
+		   </p>
 
-         <button class="btn-pesquisa" onclick="editar()">
+         <button class="btn-pesquisa" onclick="gravaEditado()">
             <i class="fas fa-check"></i>
          </button>
 		</div>

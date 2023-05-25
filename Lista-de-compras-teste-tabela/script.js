@@ -14,7 +14,9 @@ let indexEdit = ''
 let descricao = document.querySelector('.nome-item')
 let quantidade = document.querySelector('.qtde-item')
 let preco = document.querySelector('.preco-item')
-
+let nomeEdit = document.querySelector(".nome-edit")
+let qtdeEdit = document.querySelector(".qtde-edit")
+let precoEdit = document.querySelector(".preco-edit")
 mostraTodos()
 
 function incluir(){
@@ -61,10 +63,11 @@ function mostraIncluir() {
 }
 
 function mostraEditar(e) {
+	indexEdit = e.parentElement.parentElement.id
 	modalEditar.style.display = 'flex'
-  document.querySelector(".nome-edit").value = items[e.parentElement.parentElement.id].descricaoX
-  document.querySelector(".qtde-edit").value = items[e.parentElement.parentElement.id].quantidadeX
-  document.querySelector(".preco-edit").value = items[e.parentElement.parentElement.id].precoX
+  nomeEdit.value = items[e.parentElement.parentElement.id].descricaoX
+  qtdeEdit.value = items[e.parentElement.parentElement.id].quantidadeX
+  precoEdit.value = items[e.parentElement.parentElement.id].precoX
 }
 
 function pesquisar(){
@@ -128,6 +131,9 @@ function mostraTodos(){
             </td>
 		`
 		display.appendChild(tr)
+		tr.addEventListener('click', ()=>{
+      tr.style.textDecoration = 'line-through'
+		})
 	}
 }
 
@@ -143,11 +149,12 @@ function apagaTodos(){
 	}
 }
 
-function editar(e){
-  items = {
-  	
-  }
-
-	indexEdit = e.parentElement.parentElement.id
-	console.log(items[e.parentElement.parentElement.id])
+function gravaEditado(e){
+	console.log(indexEdit)
+  items[indexEdit].descricaoX = nomeEdit.value
+  items[indexEdit].quantidadeX = qtdeEdit.value
+  items[indexEdit].precoX = precoEdit.value
+  modalEditar.style.display = 'none'
+  localStorage.setItem("compras", JSON.stringify(items))
+  mostraTodos()
 }
