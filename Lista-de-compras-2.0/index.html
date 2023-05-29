@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+	<meta name="author" content="Ely Carvalho da Silva">
+	<meta charset="utf-8">
+	<!--<meta http-equiv="refresh" content="30">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!--Font awesome-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+	<title>Lista de compras</title>
+</head>
+<body>
+	<div class="container">
+		<div class="titulo">LISTA DE COMPRAS</div>
+		<div class="modal modal-pesquisa">
+			<button class="btn-fechar" onclick="fechaModal('p')">X</button>
+			<p>Digite o nome a ser pesquisado:</p>
+		   <input type="text" class="texto-pesq" maxlength="30"> 
+         <button class="btn-pesquisa" onclick="pesquisar()">
+            <i class="fas fa-search"></i>
+         </button>
+		</div>
+
+		<div class="modal modal-incluir">
+			<button class="btn-fechar" onclick="fechaModal('i')">X</button>
+
+			<p>
+				Nome do item:
+			   <input type="text" class="nome-item" maxlength="30">
+			</p>
+			<p>
+				Quantidade:
+		      <input type="text" class="qtde-item" maxlength="4"> 
+         </p>
+		   <p>
+		   	Preço:
+		      <input type="text" class="preco-item" maxlength="7" value="0">
+         </p>
+         <button class="btn-incluir" onclick="incluir()">
+            <i class="fas fa-plus"></i>
+         </button>
+		</div>
+
+		<div class="modal modal-editar">
+			<button class="btn-fechar" onclick="fechaModal('e')">X</button>
+			<p>
+				Descrição:
+		      <input type="text" class="nome-edit" maxlength="30">
+		   </p> 
+		   <p>
+		      Quantidade:
+		      <input type="text" class="qtde-edit" maxlength="4">
+		   </p>
+		   <p>
+		      Preço:
+		      <input type="text" class="preco-edit" maxlength="7">
+		   </p>
+
+         <button class="btn-editar" onclick="gravaEditado()">
+            <i class="fas fa-check"></i>
+         </button>
+		</div>
+	  
+	   <div class="container-botoes"> 
+	      <button class="btn-incluir" onclick="mostraIncluir()">
+	   	   <i class="fas fa-plus"></i>
+	      </button> 
+		   <button class="btn-pesquisa-maior" onclick="mostraPesquisa()">
+		   	<i class="fas fa-search"></i>
+		   </button>
+		   <button class="btn-todos" onclick="mostraTodos()">
+		      mostra todos
+		   </button>
+		   <button class="btn-apaga" onclick="apagaTodos()">
+		      apaga todos
+		   </button>
+	   </div>
+      <div class="topo-tabela">
+         <h5 style="margin-right: 80px;">Produto</h5>
+         <h5>Qtde</h5>
+         <h5>Preço</h5>
+      </div>
+	   <table class="display"></table>
+   </div>
+
+   <script src="script.js"></script>
+</body>
+</html>
