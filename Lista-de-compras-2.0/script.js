@@ -17,6 +17,7 @@ let preco = document.querySelector('.preco-item')
 let nomeEdit = document.querySelector(".nome-edit")
 let qtdeEdit = document.querySelector(".qtde-edit")
 let precoEdit = document.querySelector(".preco-edit")
+let total = 0
 mostraTodos()
 
 function incluir(){
@@ -28,24 +29,33 @@ function incluir(){
 	    quantidadeX: quantidade.value,
 	    precoX: preco.value 
 	  }
-	  console.log(itemDigitado)
 
 	  items.push(itemDigitado)
-		descricao.value = ''
+	  calculaTotal(preco.value, quantidade.value)
+       
+	  descricao.value = ''
 	  quantidade.value = ''
 	  preco.value = ''
 	  modalIncluir.style.display = 'none'
-
+      
 	  localStorage.setItem("compras", JSON.stringify(items))
 		mostraTodos()
 	}
 }
 
+function calculaTotal(preco, quantidade){
+	if(quantidade == ''){quantidade = 1}
+	total += (quantidade * parseFloat(preco))
+
+	console.log("total: " + total)
+}
+
 function apagar(e){
+	console.log(items[e.parentElement.parentElement.id].precoX)
 	items = JSON.parse(localStorage.compras)
-	console.log(e.parentElement.parentElement.id)
     items.splice(e.parentElement.parentElement.id, 1)
     localStorage.setItem("compras", JSON.stringify(items))
+    
     mostraTodos()	
 }
 
@@ -133,9 +143,7 @@ function mostraTodos(){
 		tr.addEventListener('click', ()=>{
 			if(tr.classList.contains('line-through')){
 				tr.classList.remove('line-through')
-				console.log("line-trhough")
 			}else{
-				console.log('no')
 				tr.classList.add('line-through')
 			}
 		})
@@ -155,10 +163,10 @@ function apagaTodos(){
 }
 
 function gravaEditado(e){
-	console.log(indexEdit)
   items[indexEdit].descricaoX = nomeEdit.value
   items[indexEdit].quantidadeX = qtdeEdit.value
   items[indexEdit].precoX = precoEdit.value
+  calculaTotal(precoEdit.value, qtdeEdit.value)
   modalEditar.style.display = 'none'
   localStorage.setItem("compras", JSON.stringify(items))
   mostraTodos()

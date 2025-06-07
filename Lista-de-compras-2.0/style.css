@@ -7,7 +7,7 @@ body{
 .container{
 	position: relative;
 	background-color: #E6EFF0;
-	height: 575px;
+	height: 650px;
 	display: flex;
 	flex-direction: column;
     justify-content: space-between;
@@ -33,7 +33,7 @@ body{
 .topo-tabela{
 	position: absolute;
 	z-index: 1;
-	top: 105px;
+	top: 82px;
 	left: 14px;
 	width: 71%;
 	display: flex;
@@ -44,7 +44,7 @@ body{
 	background-color: #ECFBFD;
 	padding: 3px;
 	width: 335px;
-	height: 440px;
+	height: 540px;
 	display: flex;
 	flex-direction: column;
 	border: 1px solid lightgray;
